@@ -38,7 +38,7 @@ class Travel extends BaseController {
         $fields = [
             'title' => 'Travel Destinations',
             'heading' => 'Travel Destinations',
-            'footer' => 'Copyright Xavier'];
+            'footer' => 'Copyright Luo Kaizhong'];
         return $parser->setData($fields)
                         ->render('templates\top') .
                 $table->generate() .
@@ -60,8 +60,13 @@ class Travel extends BaseController {
 // retrieve all the records
 
         $record = $places->find($id);
-
-
+        
+        $table = new \CodeIgniter\View\Table();
+        $table->addRow($record['name']);
+         $table->addRow($record['description']);
+         $table->addRow($record['image']);
+        //$table->addRow($record->description);
+        return $table->generate();
 
 
 
